@@ -35,7 +35,7 @@ const isInRange = num => {
 };
 
 const isInteger = num => {
-  if (Math.floor(num) === num) {
+  if (Math.round(num) === num) {
     return true;
   }
   return false;
@@ -68,7 +68,11 @@ const isPrime = num => {
 };
 
 const returnFirst = arr => {
+  if(!arr){
+    return 'There is no item in an array';
+  }
   return arr[0];
+  
 };
 
 const returnLast = arr => {
@@ -109,44 +113,27 @@ const wordsToSentence = words => {
 };
 
 const contains = (arr, item) => {
-  let itemCounter = 0;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === item) {
-      itemCounter++;
-    }
+  const result=arr.find(i=> i === item)
+  if(result){
+    return true
+  } else {
+    return false
   }
-  if (itemCounter > 0) {
-    return true;
-  }
-  return false;
 };
 
 const addNumbers = numbers => {
-  let sumOfNumbers = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    sumOfNumbers += numbers[i];
-  }
-  return sumOfNumbers;
+    const sum=numbers.reduce((acc,sum)=>acc + sum,0);
+    return sum;
 };
 
 const averageTestScore = testScores => {
-  let totalSumScores = 0;
-  let numberOfScore = 0;
-  for (let i = 0; i < testScores.length; i++) {
-    totalSumScores += testScores[i];
-    numberOfScore++;
-  }
-  return totalSumScores / numberOfScore;
+  const average=(testScores.reduce((acc,total)=> acc+total,0)) / testScores.length;
+  return average;
 };
 
 const largestNumber = numbers => {
-  let biggestInteger = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] > biggestInteger) {
-      biggestInteger = numbers[i];
-    }
-  }
-  return biggestInteger;
+  const maxNumber=Math.max(...numbers);
+  return maxNumber;
 };
 
 module.exports = {
